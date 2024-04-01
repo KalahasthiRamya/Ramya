@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void push();
+
+struct node{
+    int info;
+    struct node *next;
+};
+struct node *top = NULL;
+int main(){
+    int n = 5,i;
+    for(i=1;i<=n;i++){
+        push();
+    }
+    printf("\n\nStack is \n");
+    if(top == NULL){
+        printf("stack underflow");
+        return 1;
+    }
+    else{
+        struct node *temp = top;
+        while(temp != NULL){
+            printf("%d\n",temp -> info);
+            temp = temp -> next;
+        }
+    }
+    
+    return 0;
+}
+
+void push(){
+    struct node *n;
+    n = (struct node*)malloc(sizeof(struct node));
+    printf("enter the node : ");
+    scanf("%d",&n -> info);
+    n -> next = top;
+    top = n;
+}
