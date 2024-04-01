@@ -45,4 +45,16 @@ void display(){
     for(i=top;i>=0;i--){
         printf("%d\n",arr[i]);
     }
+int max = arr[top];
+    int min = arr[top];
+    for(i=top;i>=0;i--){
+        if(min > arr[i]){
+            min = arr[i];
+        }
+        else if(max < arr[i]){
+            max = arr[i];
+        }
+    }
+    printf("\nMax is %d",max);
+    printf("\nMin is %d",min);
 }
