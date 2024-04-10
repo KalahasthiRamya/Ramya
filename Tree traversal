@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+int info;
+struct node *left;
+struct node *right;
+};
+
+struct node *create(int t);
+struct node *setleft(struct node *root ,int p);
+struct node *setright(struct node *root,int p);
+struct node *inorder(struct node *root);
+struct node *preorder(struct node *root);
+struct node *postorder(struct node *root);
+
+int main(){
+struct node *root = NULL;
+root = create(15);
+setleft(root,10);
+setright(root,20);
+printf("Inorder : ");
+inorder(root);
+printf("\nPreorder : ");
+preorder(root);
+printf("\nPostorder : ");
+postorder(root);
+return 0;
+}
+
+struct node *create(int t){
+struct node *p;
+p = (struct node*)malloc(sizeof(struct node));
+p -> info = t;
+p -> left = NULL;
+p -> right = NULL;
+return p;
+}
+
+struct node *setleft(struct node *root,int p){
+if(root == NULL)
+printf("void insertion");
+else if(root -> left != NULL)
+printf("Invalid");
+else
+root -> left = create(p);
+}
+
+struct node *setright(struct node *root,int p){
+if(root == NULL)
+printf("void insertion");
+else if(root -> right != NULL)
+printf("Invalid");
+else
+root -> right = create(p);
+}
+
+struct node *inorder(struct node *root){
+if(root != NULL){
+inorder(root -> left);
+printf("%d ",root -> info);
+inorder(root->right);
+}
+}
+struct node *preorder(struct node *root){
+if(root != NULL){
+printf("%d ",root -> info);
+inorder(root -> left);
+inorder(root->right);
+}
+}
+
+struct node *postorder(struct node *root){
+if(root != NULL){
+inorder(root -> left);
+inorder(root->right);
+printf("%d ",root -> info);
+}
+}
