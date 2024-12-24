@@ -1,0 +1,17 @@
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+curl http://<node-ip>:30007
+# Build the Docker image
+docker build -t <your-dockerhub-username>/flask-api:latest .
+
+# Push the image to Docker Hub
+docker push <your-dockerhub-username>/flask-api:latest
+# Apply Deployment
+kubectl apply -f deployment.yaml
+
+# Apply Service
+kubectl apply -f service.yaml
+
+# Verify Deployment and Service
+kubectl get pods
+kubectl get svc
