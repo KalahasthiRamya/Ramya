@@ -1,0 +1,14 @@
+# Use the official Nginx image as the base image
+FROM nginx:latest
+
+# Remove the default Nginx static website
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy the static website to the Nginx web root
+COPY index.html /usr/share/nginx/html/
+
+# Expose port 80 to serve the website
+EXPOSE 80
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
